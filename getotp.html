@@ -39,6 +39,7 @@
             type: "POST",
             url: "http://127.0.0.1:8080/user/getotp",
             data: {telphone:telphone},
+            // xhrFields:{withCredentials:true},
             success:function(data){
                 if(data.status == "success"){
                     alert("otp已发送请注意查收");

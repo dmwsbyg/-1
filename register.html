@@ -99,10 +99,11 @@
                     gender:gender,
                     otpCode:otpCode,
                     name:name},
+            // xhrFields:{withCredentials:true},
             success:function(data){
                 if(data.status == "success"){
                     alert("注册成功");
-                    window.location.href="file:///D:/%E7%BD%91%E9%A1%B5/miaoshaqd/register.html"
+                    // window.location.href="file:///D:/%E7%BD%91%E9%A1%B5/miaoshaqd/register.html"
                 
                 }else{
                     alert("注册失败，原因为"+data.data.errMsg);
