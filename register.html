@@ -99,7 +99,12 @@
                     gender:gender,
                     otpCode:otpCode,
                     name:name},
-            // xhrFields:{withCredentials:true},
+
+            xhrFields: {
+                      withCredentials: true
+                    //   得知with-credentials是用来设置是否支持发送cookie凭证信息的字段
+              },
+            crossDomain: true,
             success:function(data){
                 if(data.status == "success"){
                     alert("注册成功");

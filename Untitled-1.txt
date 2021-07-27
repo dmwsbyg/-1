@@ -1,0 +1,22 @@
+什么是session
+
+session是服务器上的一个map[string]map[string]string类型的数据结构。 每个访问了的用户都会在
+HashMap m = new HashMap<String, HashMap<String, String>>()
+每一个访问过你服务器的人都会在这个数据结构里 放一个元素  
+m.put(sessionid, new HashMap<String,String>())
+// sessionid 哪来呢？ 你怎么知道这个访问请求是谁发起的。（这也是http请求的无状态性）
+所以在客户端第一次访问我服务器的时候，我会在你的浏览器里放一个cookie
+
+
+假设这个cookie是sessionid哈。
+怎么获取你的session呢
+session = m.get(sessionid) // 这个就是你的session
+然后你可以往里面放值  session.put("验证码", "code")
+或者取值  session.get("验证码")
+
+理解了把
+
+session和cookie的关系
+
+
+
