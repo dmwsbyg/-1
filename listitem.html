@@ -57,8 +57,10 @@
                     var dom;
                     for(var i=0; i<g_itemList.length; i++){
                         var itemVO = g_itemList[i];
+                        // var id = itemVO.id;
+                        // console.log(id)
                         dom = dom +
-                        `<tr id='itemDetail'>
+                        `<tr onclick="x(${itemVO.id})">
                             <td id="title">${itemVO.title}</td>
                             <td><img src="${itemVO.imgUrl}" style="width:100px;;height:auto"></td>
                             <td>${itemVO.description}</td>
@@ -67,6 +69,7 @@
                             <td>${itemVO.sales}</td>
 
                         </tr>`
+                        
                     }
                     var headHtml =
                     `<tr>
@@ -79,9 +82,11 @@
                     </tr>`
                     $("#data").html(headHtml+ dom)
 
-                    $("#itemDetail").on("click",function(){
-                        window.location = "getItem.html?id="+itemVO.id;
-                    });
+
+                    // $("#itemDetail").on("click",function(){
+                    //     location.href = "getitem.html?"+"id="+itemVO.id
+                    //     // window.location = "getitem.html?id="+itemVO.id;
+                    // });
                 }else{
                     alert("获取商品信息失败，原因为"+data.data.errMsg);
                 }
@@ -90,6 +95,12 @@
                 alert("获取商品信息失败，原因为"+data.responseText);
             }
         })
+    }
+
+    function x(id){
+        var id = id;
+        console.log(id)
+        location.href = "getitem.html?"+"id="+id
     }
 
     function reloadDom(){
