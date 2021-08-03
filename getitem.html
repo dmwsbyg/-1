@@ -50,13 +50,45 @@
                 <label class="control-label"id="sales"></label>
             </div>
         </div>
-       
+        <div class="form-actions" style="padding-top: 10px;">
+            <button class="btn blue" id="createorder" type="submit" onclick="xd()">下单</button>
+        </div>
     </div>
 </body>
 
 <script type="application/javascript">
 
     var g_itemVO = {};
+
+    function xd(){
+        $.ajax({
+            type: "POST",
+            url: "http://127.0.0.1:8080/order/createorder",
+            data: {itemId:g_itemVO.id,
+                    amount:1},
+
+            xhrFields: {
+                      withCredentials: true
+                    //   得知with-credentials是用来设置是否支持发送cookie凭证信息的字段
+              },
+            crossDomain: true,
+            success:function(data){
+                if(data.status == "success"){
+                   alert("下单成功");
+                   window.location.reload();
+                }else{
+                    alert("下单失败，原因为"+data.data.errMsg);
+                    if(data.data.errCode == 20003){
+                        window.location="login.html";
+                    }
+                }
+            },
+            error:function(data){
+                alert("下单失败，原因为"+data.responseText);
+            }
+        })
+    }
+
     window.onload = function() {
         var loc = location.href;
         var n1 = loc.length;
